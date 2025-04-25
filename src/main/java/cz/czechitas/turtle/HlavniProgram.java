@@ -10,6 +10,7 @@ public class HlavniProgram {
     private double initialPositionY;
 
     private double velikostStrany = 80.0;
+    private double velikostPrepony;
 
     public static void main(String[] args) {
         new HlavniProgram().start();
@@ -18,21 +19,25 @@ public class HlavniProgram {
     public void start() {
         //TODO Tady bude kód pro kreslení želví grafiky.
 
+        double velikostPrepony;
+        velikostPrepony = Math.sqrt(2 * Math.pow(45, 2));
+
         Color tmaveZelenaAsi;
         tmaveZelenaAsi = new Color(10,70,50);
 
         Color ruzovaBarva = Color.pink;
 
-        nakresliRovnoStrannyTrojuhelnik(Color.pink);
+        nakresliRovnoStrannyTrojuhelnik(80, Color.pink);
         nakresliCtverec();
         nakresliObdelnik(80d, 40d, tmaveZelenaAsi);
         nakresliMnohouhelnik(18, 10);
+        nakresliRovnoramennyTrojuhelnik(45, Color.MAGENTA);
     }
 
 
 
 
-    public void nakresliRovnoStrannyTrojuhelnik(Color ruzova) {
+    public void nakresliRovnoStrannyTrojuhelnik(double velikostStrany, Color ruzova) {
         zofka.turnRight(90);
         zofka.setPenColor(ruzova);
         for (int i = 0; i < 3; i++) {
@@ -74,7 +79,22 @@ public class HlavniProgram {
         novaKresba();
     }
 
+    public void nakresliRovnoramennyTrojuhelnik(double velikostOdvesny, Color magenta) {
+        double prepona = Math.sqrt(2 * Math.pow(velikostOdvesny, 2));
+        zofka.setPenColor(magenta);
 
+        zofka.move(velikostOdvesny);
+        zofka.turnRight(90);
+
+        zofka.move(velikostOdvesny);
+        zofka.turnRight(135);
+
+        zofka.move(prepona);
+        zofka.turnRight(135);
+
+        puvodniPoziceZelvy();
+        novaKresba();
+    }
 
     public void novaKresba(){
         /*
@@ -90,6 +110,14 @@ public class HlavniProgram {
         zofka.penDown();
     }
 
+    public void puvodniPoziceZelvy(){
+        initialPositionX = zofka.getX();
+        initialPositionY = zofka.getY();
+        zofka.setX(initialPositionX);
+        zofka.setY(initialPositionY);
+
+        zofka.turnRight(270);
+    }
 
 
 }
