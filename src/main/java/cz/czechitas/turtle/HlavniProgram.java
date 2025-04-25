@@ -10,7 +10,7 @@ public class HlavniProgram {
     private double initialPositionY;
 
     private double velikostStrany = 80.0;
-    private double velikostPrepony;
+
 
     public static void main(String[] args) {
         new HlavniProgram().start();
@@ -19,24 +19,27 @@ public class HlavniProgram {
     public void start() {
         //TODO Tady bude kód pro kreslení želví grafiky.
 
-        double velikostPrepony;
-        velikostPrepony = Math.sqrt(2 * Math.pow(45, 2));
 
+        //barvičky
         Color tmaveZelenaAsi;
         tmaveZelenaAsi = new Color(10,70,50);
 
         Color ruzovaBarva = Color.pink;
+        Color brown = new Color(160,82,45);
 
+        //kreslení základních tvvarů
         nakresliRovnoStrannyTrojuhelnik(80, Color.pink);
         nakresliCtverec();
         nakresliObdelnik(80d, 40d, tmaveZelenaAsi);
         nakresliMnohouhelnik(18, 10);
         nakresliRovnoramennyTrojuhelnik(45, Color.MAGENTA);
+
+        //kreslení obrázků
+        nakresliZmrzlinu(brown);
     }
 
 
-
-
+    //První část úkolu
     public void nakresliRovnoStrannyTrojuhelnik(double velikostStrany, Color ruzova) {
         zofka.turnRight(90);
         zofka.setPenColor(ruzova);
@@ -97,14 +100,6 @@ public class HlavniProgram {
     }
 
     public void novaKresba(){
-        /*
-        initialPositionX = zofka.getX();
-        initialPositionY = zofka.getY();
-        zofka.setX(initialPositionX);
-        zofka.setY(initialPositionY);
-
-        zofka.turnRight(90);
-         */
         zofka.penUp();
         zofka.move(velikostStrany + 50); //posun + mezera
         zofka.penDown();
@@ -118,6 +113,28 @@ public class HlavniProgram {
 
         zofka.turnRight(270);
     }
+
+    //Druhá část úkolu
+    public void nakresliZmrzlinu(Color brown) {
+
+        zofka.penUp();
+        zofka.turnLeft(90);
+        zofka.move(velikostStrany);
+        zofka.turnRight(90);
+
+        zofka.setPenColor(brown);
+        zofka.penDown();
+
+        nakresliRovnoStrannyTrojuhelnik(80, brown);
+
+        zofka.penUp();
+        zofka.turnLeft(180);
+        zofka.move(velikostStrany);
+        zofka.penDown();
+
+        nakresliMnohouhelnik(20, 10);
+    }
+
 
 
 }
