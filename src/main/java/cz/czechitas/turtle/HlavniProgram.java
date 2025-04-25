@@ -18,11 +18,14 @@ public class HlavniProgram {
     public void start() {
         //TODO Tady bude kód pro kreslení želví grafiky.
 
+        Color jakaBarva;
+        jakaBarva = new Color(10,70,50);
+
         Color ruzovaBarva = Color.pink;
 
         nakresliRovnoStrannyTrojuhelnik(Color.pink);
         nakresliCtverec();
-        nakresliObdelnik(80d, 40d, Color.pink);
+        nakresliObdelnik(80d, 40d, jakaBarva);
         nakresliMnohouhelnik(18, 10);
     }
 
@@ -49,8 +52,8 @@ public class HlavniProgram {
         novaKresba();
     }
 
-    public void nakresliObdelnik(double velikostStranyA, double velikostStranyB, Color pink) {
-        zofka.setPenColor(pink);
+    public void nakresliObdelnik(double velikostStranyA, double velikostStranyB, Color jakaBarva) {
+        zofka.setPenColor(jakaBarva);
 
         for (int i = 0; i < 2; i++) {
             zofka.move(velikostStranyA);
