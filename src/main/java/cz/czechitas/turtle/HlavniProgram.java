@@ -9,6 +9,8 @@ public class HlavniProgram {
     private double initialPositionX;
     private double initialPositionY;
 
+    private double velikostStrany = 80.0;
+
     public static void main(String[] args) {
         new HlavniProgram().start();
     }
@@ -18,52 +20,52 @@ public class HlavniProgram {
 
         Color ruzovaBarva = Color.pink;
 
-        nakresliRovnoStrannyTrojuhelnik(70.0, 120.0, Color.pink);
-        nakresliCtverec(50, 90);
-        nakresliObdelnik(80d, 40d, 90, Color.pink);
-        nakresliMnohouhelnik(18, 10, 25);
-
+        nakresliRovnoStrannyTrojuhelnik(Color.pink);
+        nakresliCtverec();
+        nakresliObdelnik(80d, 40d, Color.pink);
+        nakresliMnohouhelnik(18, 10);
     }
 
 
 
 
-    public void nakresliRovnoStrannyTrojuhelnik(double velikostStrany, double uhel, Color pink) {
+    public void nakresliRovnoStrannyTrojuhelnik(Color ruzova) {
         zofka.turnRight(90);
-        zofka.setPenColor(pink);
+        zofka.setPenColor(ruzova);
         for (int i = 0; i < 3; i++) {
             zofka.move(velikostStrany);
-            zofka.turnRight(uhel);
+            zofka.turnRight(120);
         }
         novaKresba();
 
     }
 
-    public void nakresliCtverec(double velikostStrany, double uhel){
+    public void nakresliCtverec() {
         for (int i = 0; i < 4; i++) {
             zofka.setPenColor(Color.CYAN);
-            zofka.move(50);
+            zofka.move(velikostStrany);
             zofka.turnRight(90);
         }
         novaKresba();
     }
 
-    public void nakresliObdelnik(double velikostStranyA, double velikostStranyB, double uhel, Color pink) {
+    public void nakresliObdelnik(double velikostStranyA, double velikostStranyB, Color pink) {
         zofka.setPenColor(pink);
 
         for (int i = 0; i < 2; i++) {
             zofka.move(velikostStranyA);
-            zofka.turnRight(uhel);
+            zofka.turnRight(90);
             zofka.move(velikostStranyB);
-            zofka.turnRight(uhel);
+            zofka.turnRight(90);
         }
         novaKresba();
     }
 
-    public void nakresliMnohouhelnik(double pocetKroku, double posun, double uhel){
+    public void nakresliMnohouhelnik(int pocetStran ,double velikostStrany){
         zofka.setPenColor(Color.CYAN);
-        for (int i = 0; i < pocetKroku; i++) {
-            zofka.move(posun);
+        double uhel = 360.0 / pocetStran;
+        for (int i = 0; i < pocetStran; i++) {
+            zofka.move(velikostStrany);
             zofka.turnRight(uhel);
         }
         novaKresba();
@@ -72,16 +74,16 @@ public class HlavniProgram {
 
 
     public void novaKresba(){
+        /*
         initialPositionX = zofka.getX();
         initialPositionY = zofka.getY();
-
         zofka.setX(initialPositionX);
         zofka.setY(initialPositionY);
 
         zofka.turnRight(90);
-
+         */
         zofka.penUp();
-        zofka.move(90);
+        zofka.move(velikostStrany + 50); //posun + mezera
         zofka.penDown();
     }
 
