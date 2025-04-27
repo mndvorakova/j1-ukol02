@@ -127,13 +127,8 @@ public class HlavniProgram {
     //Druhá část úkolu
     public void nakresliZmrzlinu(Color brown) {
 
-        zofka.penUp();
-        zofka.turnLeft(90);
-        zofka.move(velikostStrany);
-        zofka.turnRight(90);
-
+        posunSeDolu();
         zofka.setPenColor(brown);
-        zofka.penDown();
 
         nakresliRovnoStrannyTrojuhelnik(80, brown);
 
@@ -171,11 +166,7 @@ public class HlavniProgram {
 
     public void nakresliVlacek(){
         //posun dolu
-        zofka.penUp();
-        zofka.turnLeft(90);
-        zofka.move(velikostStrany);
-        zofka.turnRight(90);
-        zofka.penDown();
+        posunSeDolu();
 
         nakresliMnohouhelnik(20,10,Color.BLACK);
 
@@ -217,6 +208,15 @@ public class HlavniProgram {
         nakresliRovnoramennyTrojuhelnik(45, Color.magenta);
     }
 
+
+    public void posunSeDolu(){
+        zofka.penUp();
+        zofka.turnLeft(90);
+        zofka.move(velikostStrany);
+        zofka.turnRight(90);
+        zofka.penDown();
+
+    }
 
 }
 
