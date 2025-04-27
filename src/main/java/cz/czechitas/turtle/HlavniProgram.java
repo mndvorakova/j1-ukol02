@@ -22,27 +22,39 @@ public class HlavniProgram {
 
         //barvičky
         Color tmaveZelenaAsi;
-        tmaveZelenaAsi = new Color(10,70,50);
+        tmaveZelenaAsi = new Color(10, 70, 50);
 
+        Color svetleModraBarva = new Color(200, 230, 255);
         Color ruzovaBarva = Color.pink;
-        Color brown = new Color(160,82,45);
+        Color brown = new Color(160, 82, 45);
 
         //kreslení základních tvvarů
         nakresliRovnoStrannyTrojuhelnik(80, Color.pink);
         nakresliCtverec();
         nakresliObdelnik(80d, 40d, tmaveZelenaAsi);
-        nakresliMnohouhelnik(18, 10);
+        nakresliMnohouhelnik(18, 10, svetleModraBarva);
         nakresliRovnoramennyTrojuhelnik(45, Color.MAGENTA);
 
         //kreslení obrázků
         nakresliZmrzlinu(brown);
+        nakresliSnehulaka(25, 10, 5);
+
     }
 
+    private void nakresliMnohouhelnik(int pocetStran, double velikostStrany, Color svetleModraBarva) {
+        zofka.setPenColor(svetleModraBarva);
+        double uhel = 360.0 / pocetStran;
+        for (int i = 0; i < pocetStran; i++) {
+            zofka.move(velikostStrany);
+            zofka.turnRight(uhel);
+        }
+        novaKresba();
+    }
 
     //První část úkolu
-    public void nakresliRovnoStrannyTrojuhelnik(double velikostStrany, Color ruzova) {
+    public void nakresliRovnoStrannyTrojuhelnik(double velikostStrany, Color ruzovaBarva) {
         zofka.turnRight(90);
-        zofka.setPenColor(ruzova);
+        zofka.setPenColor(ruzovaBarva);
         for (int i = 0; i < 3; i++) {
             zofka.move(velikostStrany);
             zofka.turnRight(120);
@@ -72,6 +84,8 @@ public class HlavniProgram {
         novaKresba();
     }
 
+
+    /*
     public void nakresliMnohouhelnik(int pocetStran ,double velikostStrany){
         zofka.setPenColor(Color.CYAN);
         double uhel = 360.0 / pocetStran;
@@ -81,6 +95,7 @@ public class HlavniProgram {
         }
         novaKresba();
     }
+     */
 
     public void nakresliRovnoramennyTrojuhelnik(double velikostOdvesny, Color magenta) {
         double prepona = Math.sqrt(2 * Math.pow(velikostOdvesny, 2));
@@ -99,13 +114,13 @@ public class HlavniProgram {
         novaKresba();
     }
 
-    public void novaKresba(){
+    public void novaKresba() {
         zofka.penUp();
         zofka.move(velikostStrany + 50); //posun + mezera
         zofka.penDown();
     }
 
-    public void puvodniPoziceZelvy(){
+    public void puvodniPoziceZelvy() {
         initialPositionX = zofka.getX();
         initialPositionY = zofka.getY();
         zofka.setX(initialPositionX);
@@ -132,9 +147,36 @@ public class HlavniProgram {
         zofka.move(velikostStrany);
         zofka.penDown();
 
-        nakresliMnohouhelnik(20, 10);
+        nakresliMnohouhelnik(20, 10, Color.PINK);
+
+        novaKresba();
     }
 
+    /*
+    public void nakresliSnehulaka(Color svetleModraBarva){
+        zofka.setPenColor(svetleModraBarva);
 
+        for (int i = 0; i < 3; i++) {
+            nakresliMnohouhelnik(20, 10, svetleModraBarva);
+
+        }
+    }
+
+     */
+
+
+    public void nakresliSnehulaka(double spodek, double bricho, double hlava) {
+
+        zofka.turnRight(90);
+
+
+
+        //novaKresba();
+    }
 
 }
+
+
+
+
+
