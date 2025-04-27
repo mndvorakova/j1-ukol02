@@ -37,9 +37,11 @@ public class HlavniProgram {
 
         //kreslení obrázků
         nakresliZmrzlinu(brown);
-        nakresliSnehulaka(25, 10, 5);
+        nakresliSnehulaka();
 
     }
+
+    //První část úkolu
 
     private void nakresliMnohouhelnik(int pocetStran, double velikostStrany, Color svetleModraBarva) {
         zofka.setPenColor(svetleModraBarva);
@@ -48,10 +50,15 @@ public class HlavniProgram {
             zofka.move(velikostStrany);
             zofka.turnRight(uhel);
         }
-        novaKresba();
+
     }
 
-    //První část úkolu
+    void novaKresba() {
+        zofka.penUp();
+        zofka.move(velikostStrany + 50); //posun + mezera
+        zofka.penDown();
+    }
+
     public void nakresliRovnoStrannyTrojuhelnik(double velikostStrany, Color ruzovaBarva) {
         zofka.turnRight(90);
         zofka.setPenColor(ruzovaBarva);
@@ -85,18 +92,6 @@ public class HlavniProgram {
     }
 
 
-    /*
-    public void nakresliMnohouhelnik(int pocetStran ,double velikostStrany){
-        zofka.setPenColor(Color.CYAN);
-        double uhel = 360.0 / pocetStran;
-        for (int i = 0; i < pocetStran; i++) {
-            zofka.move(velikostStrany);
-            zofka.turnRight(uhel);
-        }
-        novaKresba();
-    }
-     */
-
     public void nakresliRovnoramennyTrojuhelnik(double velikostOdvesny, Color magenta) {
         double prepona = Math.sqrt(2 * Math.pow(velikostOdvesny, 2));
         zofka.setPenColor(magenta);
@@ -114,11 +109,7 @@ public class HlavniProgram {
         novaKresba();
     }
 
-    public void novaKresba() {
-        zofka.penUp();
-        zofka.move(velikostStrany + 50); //posun + mezera
-        zofka.penDown();
-    }
+
 
     public void puvodniPoziceZelvy() {
         initialPositionX = zofka.getX();
@@ -152,26 +143,27 @@ public class HlavniProgram {
         novaKresba();
     }
 
-    /*
-    public void nakresliSnehulaka(Color svetleModraBarva){
-        zofka.setPenColor(svetleModraBarva);
-
-        for (int i = 0; i < 3; i++) {
-            nakresliMnohouhelnik(20, 10, svetleModraBarva);
-
-        }
-    }
-
-     */
 
 
-    public void nakresliSnehulaka(double spodek, double bricho, double hlava) {
+    public void nakresliSnehulaka() {
+
+        nakresliMnohouhelnik(20, 10, Color.blue);
+        zofka.turnRight(90);
+        zofka.penUp();
+        zofka.move(75);
+        zofka.turnLeft(90);
+        zofka.penDown();
+
+        nakresliMnohouhelnik(15, 8, Color.blue);
 
         zofka.turnRight(90);
+        zofka.penUp();
+        zofka.move(45);
+        zofka.turnLeft(90);
+        zofka.penDown();
 
-
-
-        //novaKresba();
+        nakresliMnohouhelnik(12, 6, Color.blue);
+        novaKresba();
     }
 
 }
