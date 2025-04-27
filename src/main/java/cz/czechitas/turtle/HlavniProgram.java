@@ -32,12 +32,16 @@ public class HlavniProgram {
         nakresliRovnoStrannyTrojuhelnik(80, Color.pink);
         nakresliCtverec();
         nakresliObdelnik(80d, 40d, tmaveZelenaAsi);
+        novaKresba();
         nakresliMnohouhelnik(18, 10, svetleModraBarva);
+        novaKresba();
         nakresliRovnoramennyTrojuhelnik(45, Color.MAGENTA);
+        novaKresba();
 
         //kreslení obrázků
         nakresliZmrzlinu(brown);
         nakresliSnehulaka();
+        nakresliVlacek();
 
     }
 
@@ -88,7 +92,7 @@ public class HlavniProgram {
             zofka.move(velikostStranyB);
             zofka.turnRight(90);
         }
-        novaKresba();
+
     }
 
 
@@ -106,7 +110,7 @@ public class HlavniProgram {
         zofka.turnRight(135);
 
         puvodniPoziceZelvy();
-        novaKresba();
+
     }
 
 
@@ -143,8 +147,6 @@ public class HlavniProgram {
         novaKresba();
     }
 
-
-
     public void nakresliSnehulaka() {
 
         nakresliMnohouhelnik(20, 10, Color.blue);
@@ -164,7 +166,57 @@ public class HlavniProgram {
 
         nakresliMnohouhelnik(12, 6, Color.blue);
         novaKresba();
+
     }
+
+    public void nakresliVlacek(){
+        //posun dolu
+        zofka.penUp();
+        zofka.turnLeft(90);
+        zofka.move(velikostStrany);
+        zofka.turnRight(90);
+        zofka.penDown();
+
+        nakresliMnohouhelnik(20,10,Color.BLACK);
+
+        zofka.penUp();
+        zofka.turnRight(90);
+        zofka.move(30);
+        zofka.turnLeft(90);
+        zofka.move(30);
+        zofka.turnRight(90);
+        zofka.penDown();
+
+        nakresliObdelnik(100d, 50d, Color.red);
+        zofka.turnLeft(90);
+        nakresliObdelnik(100d, 50d, Color.red);
+
+        zofka.penUp();
+        zofka.move(30);
+
+        zofka.turnLeft(90);
+        zofka.move(20);
+        zofka.penDown();
+
+        //kola
+        nakresliMnohouhelnik(10,10,Color.BLACK);
+        zofka.penUp();
+        zofka.turnRight(90);
+        zofka.move(50);
+        zofka.penDown();
+        zofka.turnLeft(90);
+        nakresliMnohouhelnik(10, 10, Color.BLACK);
+
+
+        //zofka.turnRight(90);
+        zofka.penUp();
+        zofka.move(-50);
+        zofka.penDown();
+
+
+        nakresliRovnoramennyTrojuhelnik(45, Color.magenta);
+    }
+
 
 }
 
